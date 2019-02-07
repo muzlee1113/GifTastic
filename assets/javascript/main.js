@@ -45,69 +45,50 @@ var offsetCounter = 0;
 
 
 $(document).ready(function () {
-    //==================================================INITIAL PREPERATION==============================================//   
-    //-----------------------------------------display tag buttons------------------------------------
-    //if the local storage has no key named CharacterArray
-    if (localStorage.getItem("CharacterArray") === null) {
-        //save the initial character array in local storage
-        localStorage.setItem("CharacterArray", JSON.stringify(initialCharacterArray))
-        CharacterArray = JSON.parse(localStorage.getItem("CharacterArray"))
-    } else {
-        //else save the character array get fromt he local storage into CharacterArray
-        CharacterArray = JSON.parse(localStorage.getItem("CharacterArray"))
+//==================================================INITIAL PREPERATION==============================================//   
+    function initial() {
+        //-----------------------------------------display tag buttons------------------------------------
+        //if the local storage has no key named CharacterArray
+        if (localStorage.getItem("CharacterArray") === null) {
+            //save the initial character array in local storage
+            localStorage.setItem("CharacterArray", JSON.stringify(initialCharacterArray))
+            CharacterArray = JSON.parse(localStorage.getItem("CharacterArray"))
+        } else {
+            //else save the character array get fromt he local storage into CharacterArray
+            CharacterArray = JSON.parse(localStorage.getItem("CharacterArray"))
+        }
+        //create a loop to display the characters as buttons on the screen
+        for (let i in CharacterArray) {
+            //create li tag to set the button in a list and change the id of the li to the name of the charactrer
+            var liTag = $("<li>").attr("id", CharacterArray[i])
+            //create buttonTag variable to same new button tag
+            //change the text of the button into the name of the character in the array
+            var buttonTag = $("<button>").text(CharacterArray[i])
+            //append the buttonTag to liTag
+            liTag.append(buttonTag)
+            //append the liTag to #trendy
+            $("#trendy").append(liTag)
+        }
+
+        //-----------------------------------------display favorite tags------------------------------------
+        FavoriteArray = JSON.parse(localStorage.getItem("FavoriteArray"))
+        //create a loop to display the characters in favorite list as buttons on the screen
+        for (let i in FavoriteArray) {
+            //create li tag to set the button in a list and change the id of the li to the name of the charactrer
+            var liTag = $("<li>").attr("id", FavoriteArray[i])
+            //create buttonTag variable to same new button tag
+            //change the text of the button into the name of the character in the array
+            var buttonTag = $("<button>").text(FavoriteArray[i])
+            //append the buttonTag to liTag
+            liTag.append(buttonTag)
+            //append the liTag to #favorite
+            $("#favorites").append(liTag)
+        }
     }
-    //create a loop to display the characters as buttons on the screen
-    for (let i in CharacterArray) {
-        //create li tag to set the button in a list and change the id of the li to the name of the charactrer
-        var liTag = $("<li>").attr("id", CharacterArray[i])
-        //create buttonTag variable to same new button tag
-        //change the text of the button into the name of the character in the array
-        var buttonTag = $("<button>").text(CharacterArray[i])
-        //append the buttonTag to liTag
-        liTag.append(buttonTag)
-        //append the liTag to #trendy
-        $("#trendy").append(liTag)
-    }
-
-    //-----------------------------------------display favorite tags------------------------------------
-    FavoriteArray = JSON.parse(localStorage.getItem("FavoriteArray"))
-    //create a loop to display the characters in favorite list as buttons on the screen
-    for (let i in FavoriteArray) {
-        //create li tag to set the button in a list and change the id of the li to the name of the charactrer
-        var liTag = $("<li>").attr("id", FavoriteArray[i])
-        //create buttonTag variable to same new button tag
-        //change the text of the button into the name of the character in the array
-        var buttonTag = $("<button>").text(FavoriteArray[i])
-        //append the buttonTag to liTag
-        liTag.append(buttonTag)
-        //append the liTag to #favorite
-        $("#favorites").append(liTag)
-    }
-    
-    //-----------------------------------------add buttons------------------------------------------
-    //clickhandlers for the add button
-    $("#add").on("click", function () {
-        //grab the input string (val)
-        var addInput = $("#addInput").val().trim();
-        //save the new character into the array
-        CharacterArray.push(addInput);
-        //sav the new array into local storage
-        localStorage.setItem("CharacterArray", JSON.stringify(CharacterArray));
-        //populate it as an button in list into the button-container
-        //create li tag to set the button in a list and change the id of the li to the name of the charactrer
-        var liTag = $("<li>").attr("id", addInput);
-        //create buttonTag variable to same new button tag
-        //change the text of the button into the name of the character in the array
-        var addButtonTag = $("<button>").text(addInput);
-        //append the buttonTag to liTag
-        liTag.append(addButtonTag);
-        //append the liTag to #trendy
-        $("#trendy").append(liTag);
-    })
 
 
 
-    //===================================================CLICK HANDLERS===================================================//   
+//===================================================CLICK HANDLERS===================================================//   
 
     //-----------------------------------------tag buttons click ------------------------------------------
     //clickhandlers for the buttons
@@ -133,6 +114,28 @@ $(document).ready(function () {
 
         })
     })
+
+    //-----------------------------------------add buttons------------------------------------------
+    //clickhandlers for the add button
+    $("#add").on("click", function () {
+        //grab the input string (val)
+        var addInput = $("#addInput").val().trim();
+        //save the new character into the array
+        CharacterArray.push(addInput);
+        //sav the new array into local storage
+        localStorage.setItem("CharacterArray", JSON.stringify(CharacterArray));
+        //populate it as an button in list into the button-container
+        //create li tag to set the button in a list and change the id of the li to the name of the charactrer
+        var liTag = $("<li>").attr("id", addInput);
+        //create buttonTag variable to same new button tag
+        //change the text of the button into the name of the character in the array
+        var addButtonTag = $("<button>").text(addInput);
+        //append the buttonTag to liTag
+        liTag.append(addButtonTag);
+        //append the liTag to #trendy
+        $("#trendy").append(liTag);
+    })
+
 
     //-----------------------------------------load more click------------------------------------------
     //create a click handler for the loading item
@@ -177,7 +180,7 @@ $(document).ready(function () {
         }
     });
 
-    //========================================================FUNCTIONS=================================================//   
+//========================================================FUNCTIONS=================================================//   
 
     //-----------------------------------------display gifs and stuff ------------------------------------------
     function display() {
@@ -296,6 +299,11 @@ $(document).ready(function () {
         }).disableSelection();
     });
 
+//========================================================Function Listener=================================================//   
+initial()
 
 });
+
+
+
 
