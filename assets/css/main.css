@@ -1,0 +1,149 @@
+.grid {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+    grid-auto-rows: 330px;
+    margin-top: 2em;
+}
+
+header {
+    padding: 0.5em;
+    background-color: #960113;
+    color: white;
+}
+h1 {
+    font-family: 'Teko', sans-serif;
+    font-size: 3em;
+    padding: 0;
+    margin: 0;
+}
+h2{
+    font-family: 'Teko', sans-serif;
+    font-size: 2em;
+    padding: 0;
+    margin: 0;
+}
+h3{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0.5em;
+    color: lightgrey;
+}
+body {
+    margin: 10px;
+}
+
+.item {
+    background-color: #F1F1F1;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.item:hover {
+    background-color: #FFEBEB;
+    /* display download and save button */
+}
+
+.gif, .load{
+    width: 100%;
+    height: auto;
+    margin-bottom: 5px;
+    /* if the height of the gif is bigger than XXX, span the gif to more row */
+    z-index: 10;
+}
+  
+.title{
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Teko', sans-serif;
+    color: #ffffff;
+    background-color: #960113;
+    border-radius: 10px 10px 0px 0px;
+   }
+
+.rating, .tags, .downloadTag, .url{
+    font-size: 15px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+.rating, .tags {
+font-family: 'Open Sans', sans-serif;
+}
+
+p{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    background-color: #F1F1F1;
+}
+
+.add{
+    padding-top: 2em;
+    padding-bottom: 1em;
+    padding-left: 40px;
+}
+.button-container {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    padding-top: 1em;
+    padding-bottom: 2em;
+}
+
+.favorite {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    padding-top: 1em;
+    padding-bottom: 2em;
+}
+
+button{
+    padding-top: 2px; 
+    padding-bottom: 2px; 
+    background-color: #960113;
+    color: white;
+    font-family: 'Teko', sans-serif;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    margin-right: 3px;
+    margin-bottom: 3px;
+}
+button:hover{  
+    background-color: #F8E71C;
+}
+
+input{
+    height: 2em;
+}
+
+ul > li {
+    display: inline-block;
+    zoom:1;
+    *display:inline;
+}
+
+ul[title]::before {
+    content: attr(title);
+    /* then add some nice styling as needed, eg: */
+    display: block;
+    font-weight: bold;
+    font-family: 'Teko', sans-serif;
+    font-size: 2em;
+    padding: 0;
+    margin: 0;
+}
+
+ul[hint]::after {
+    content: attr(hint);
+    /* then add some nice styling as needed, eg: */
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0.5em;
+    color: lightgrey;
+}
