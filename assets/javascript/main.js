@@ -207,6 +207,11 @@ $(document).ready(function () {
             var titleTag = $("<div>").addClass("title");
             // change the text of the title div to the title in the response
             titleTag.text(gifArray[i].title);
+            //hint----------------------------------------------------------------
+            //create new div and set class as hint
+            var hintTag = $("<div>").addClass("hint");
+            // change the text of the rating div to the rating in the response
+            hintTag.text("Click to move 👆");
 
             //rating----------------------------------------------------------------
             //create new div and set class as rating
@@ -232,7 +237,7 @@ $(document).ready(function () {
 
             //append-------------------------------------------------------------------
             //append the img, rating and titile div to item
-            itemTag.append(titleTag, imgTag, ratingTag, urlTag, downloadTag)
+            itemTag.append(titleTag, imgTag, hintTag, ratingTag, urlTag, downloadTag)
             //append item to .grid
             $(".grid").append(itemTag)
             //Span the item if it's too big-----------------------------------------------
