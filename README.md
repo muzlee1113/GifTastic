@@ -1,5 +1,5 @@
 # GifTastic
-<<<<<<< HEAD
+## HEAD
 This is a Giphy Displaying website that help me practice Javascript and AJAX.
 
 ## Getting Started and Steps
